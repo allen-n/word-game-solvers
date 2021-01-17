@@ -1,19 +1,20 @@
-# try:
-#     from nltk.corpus import words
-#     word_list = words.words()
-# except LookupError as e:
-#     print("Downloading nltk words corpus due to error: {}".format(e))
-#     import nltk
-#     nltk.download('words')
-# finally:
-#     from nltk.corpus import words
-#     word_list = words.words()
 import time
+import argparse
 from tqdm import tqdm
 
 
-letters = 'l,c,i,t,o,k,a'
-targetLetter = 'l'
+parser = argparse.ArgumentParser()
+parser.add_argument("--letters", "-l", help="comma seperated list of letters (i.e. 'a,b,c,d')", type=str, required=True)
+parser.add_argument("--target", "-t", help="the target letter from the comma seperated list of letters (i.e. 'a')", type=str, required=True)
+args = parser.parse_args()
+letters = args.letters # 'l,c,i,t,o,k,a'
+targetLetter = args.target # 'l'
+# if not letters or not targetLetter:
+#     print("Letters ({}) or target letter ({}) not provided in correct format.\
+#  Run spellingBeeSolver.py -h for help.".format(
+#         letters, targetLetter
+#     ))
+#     raise Exception
 letters = letters.split(',')
 letterSet = set(letters)
 minLetters = 4
