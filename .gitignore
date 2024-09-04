@@ -1,2 +1,4 @@
 env
 winningWords.txt
+.venv
+*.pkl
